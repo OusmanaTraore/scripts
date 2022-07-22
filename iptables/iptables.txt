@@ -1,0 +1,20 @@
+|Check Status of iptables >> 
+sudo iptables -L -v
+Activation du traffic sur localhost
+sudo iptables -A INPUT -i lo -j ACCEPT
+Activation des connexions sur le port HTTP,SSH et SSL
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+Accepter le traffic depuis une adresse IP spécifique (source)
+sudo iptables -A INPUT -s 192.168.1.3 -j ACCEPT
+Lister les règles
+sudo iptables -L --line-numbers
+Suppression des règles
+sudo iptables -F
+Suppression d'une règle sur une ligne donnée
+sudo iptables -D INPUT 3
+Changement persistant
+sudo /sbin/iptables-save
+Changement persistant 2
+sudo service iptables save
