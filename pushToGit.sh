@@ -44,10 +44,11 @@ addingGit(){
              
                                 sleep 2
                     
-                                echo " |==> CHECKING SSHKEY"
+                                echo " |==> CHECKING SSHKEY ... >> "
+                                sleep 2
                                         if [[ ! -f ~/.ssh/gitpush.pub ]]
                                         then
-                                                echo " |==> GENERATING SSHKEY"
+                                                echo " |==> GENERATING SSHKEY... >>"
                                                 ssh-keygen -t ed25519 -N '' -f ~/.ssh/gitpush
                                                 eval $(ssh-agent -s)
                                                 ssh-add ~/.ssh/gitpush
@@ -55,7 +56,7 @@ addingGit(){
                                                 echo " add the key to your repository , then press key to continue"
                                                 read -p " |==> " k
                                         else
-                                                echo " |==> SSHKEY FOUND"
+                                                echo " |==> SSHKEY FOUND... >>"
                                         fi
                                 sleep 2
                                 echo "|Push to git \"script\"  repository >>"

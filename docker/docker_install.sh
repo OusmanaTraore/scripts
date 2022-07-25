@@ -11,9 +11,9 @@ sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/dock
 echo '| Removing podman and buildah >> '
 sudo dnf remove podman buildah
 
-# INSTALLATION OF DOCKER 
+# INSTALLATION OF DOCKER AND DOCKER-COMPOSE
 echo '| Installation of docker-ce, docker-ce-li, containerd.io >> '
-sudo dnf install docker-ce docker-ce-cli containerd.io -y
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
 
 
 # ENABLE SERVICES AND START
@@ -25,10 +25,14 @@ sleep 1
 echo '| Checking status >> '
 sudo systemctl status docker.service | grep Active
 
-# CHECKING VERSION
-echo '| Checking Version >> '
+# CHECKING VERSIONS
+echo '| Checking docker Version >> '
 sudo docker version 
-
+sleep 2
+# CHECKING VERSION
+echo '| Checking docker compose Version >> '
+sudo docker compose version 
+sleep 2
 # GET DOCKER INFO
 echo '| Getting docker info >> '
 sudo docker info
