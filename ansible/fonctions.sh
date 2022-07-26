@@ -10,7 +10,7 @@ intro(){
     for filename in 0*
     do 
          echo "========================================="
-         echo -n "ETAPE n°$etape"
+         echo -n "STEP n°$etape"
          echo ""
          echo "========================================="
          echo -n " |===>  "; echo $filename | cut -d "-" -f 2 | cut -d "." -f 1  | awk '{ print toupper($0) }'         

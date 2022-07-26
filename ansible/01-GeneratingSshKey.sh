@@ -21,3 +21,10 @@ do
   echo "|Copy the ssh-key to the node >>"
   ssh-copy-id vagrant@$nodeIP
 done
+ echo -n "Reload the procedure.sh and go the the next step >>"
+ echo -n " ETAPE n°3
+  =========================================
+   |===>  ANSIBLECONFIGFILE
+  =========================================
+  "
+

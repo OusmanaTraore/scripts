@@ -18,5 +18,11 @@ systemctl start grafana-server
 systemctl status grafana-server
 
 sudo systemctl enable grafana-server.service
+
+#### ALLOWING FIREWALL ####
+sudo firewall-cmd --add-port=3000/tcp --permanent
+sudo firewall-cmd --reload
+
+
 ############################### END OF INSTALLATION OF GRAFANA ##############################
         
