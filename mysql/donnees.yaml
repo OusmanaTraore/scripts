@@ -1,0 +1,19 @@
+--host:
+    id:
+    ip:
+    id_site:
+    nom_site:
+    topologie:
+    id_client:
+    nom_client:
+    profil_client:
+    offre:
+    mid:
+    mid_proac:
+    constructeur:
+    code_postal:
+    fonction:
+    timestamp:
+    interface:
+    in_octets:
+    out_octets:
