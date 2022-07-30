@@ -1,5 +1,10 @@
 #!/bin/bash
 ############################  BEGINING OF VARIABLES ##############################
+evalSSH(){
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/gitpush
+cat ~/.ssh/gitpush.pub
+}
 ############################  END OF  VARIABLES ##################################
 
 addingGit(){
@@ -34,11 +39,14 @@ addingGit(){
                                 git add $i
                                 done
                                 testGit=$(git remote -v | grep  git@github.com:OusmanaTraore/scripts.git)
+                                addingRemote=$(echo $testGit | cut -d " " -f2)
                                         if [[ ! $testGit  ]]
                                         then 
-                                                git remote add origin git@github.com:OusmanaTraore/scripts.git
+                                                echo " |==> Adding remote : $addingRemote  >>"
+                                                git remote add origin $addingRemote
                                         else 
-                                        echo $testGit
+                                                echo " |==> Remote :  >>"
+                                                echo $testGit
                                         fi
                                 git commit -m "adding $file to repository"
              
@@ -50,13 +58,12 @@ addingGit(){
                                         then
                                                 echo " |==> GENERATING SSHKEY... >>"
                                                 ssh-keygen -t ed25519 -N '' -f ~/.ssh/gitpush
-                                                eval $(ssh-agent -s)
-                                                ssh-add ~/.ssh/gitpush
-                                                cat ~/.ssh/gitpush.pub
+                                                evalSSH
                                                 echo " add the key to your repository , then press key to continue"
                                                 read -p " |==> " k
                                         else
                                                 echo " |==> SSHKEY FOUND... >>"
+                                                evalSSH
                                         fi
                                 sleep 2
                                 echo "|Push to git \"script\"  repository >>"
