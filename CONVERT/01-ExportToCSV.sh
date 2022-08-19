@@ -1,8 +1,8 @@
-#!/bin/bash
+ #!/bin/bash
 
-user_db=""
-db_name=""
-file_name=""
+user_db="root"
+db_name="mysql"
+file_name="test2"
 
 
 echo " | Enter the name of table to export  >"
@@ -20,7 +20,10 @@ export $table_name
 sleep 2
 echo " | Exporting table: $table_name to csv file  >"
 
-mysql  -u $user_db -p -e 'select * from $table_name' |
-sed 's/\t/,/g' > /var/lib/mysql-files/$file_name.csv
+mysql  -u $user_db -p $db_name -e 'select * from NAGIOSTATS' |
+sed 's/\t/,/g' > $file_name.csv
 
-echo " File created : /var/lib/mysql-files/$file_name.csv "
+cat $file_name.csv | head -10
+#echo " File created : /var/lib/mysql-files/$file_name.csv "
+#sudo cp $file_name.csv /var/lib/mysql-files/
+
