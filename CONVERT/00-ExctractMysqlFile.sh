@@ -11,11 +11,23 @@ IFS=":"
  read -p " |>  " user_db
  echo " | Extracting database to  $file_name.sql > "
  sleep 2
- mysqldump -u $user_db -p  $db_name > /var/lib/mysql-files/$file_name.sql
+sudo  mysqldump -u $user_db -p  $db_name > $file_name.sql
  echo " file created: $file_name.sql"
-  sed -i "2a $db_name"  01-ExportToCSV.sh 
-  sed -i "4a $file_name"  01-ExportToCSV.sh 
-  sed -i  "5a $user_db"  01-ExportToCSV.sh 
+
+list= "$db_name:$file_name:$user_db"
+for i in $list
+do
+  if ! grep -Fxq "$list" 01-ExportToCSV.sh
+  then
+  echo "$list not found .."
+  echo "|> "
+  sleep 2
+  echo "Sending variables ..."
+  sed -i "2a $i"  01-ExportToCSV.sh
+  else 
+        echo "$list found ...OK"
+  fi
+done
 sleep 2
  echo "| go to next step > "
 
