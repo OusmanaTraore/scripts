@@ -1,6 +1,5 @@
 #!/bin/bash
 #######################################   VARIABLES ###################################################
-IFS=":"
 
 ###################################### BEGIN APT INSTALLATION ##########################################
  echo " | Enter the database name > "
@@ -14,7 +13,7 @@ IFS=":"
 sudo  mysqldump -u $user_db -p  $db_name > $file_name.sql
  echo " file created: $file_name.sql"
 
- list="$db_name:$file_name:$user_db"
+list="$db_name $file_name $user_db"
  for i in $list
  do
         export $i
