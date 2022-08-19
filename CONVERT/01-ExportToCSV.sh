@@ -18,4 +18,3 @@ mysql  -u $user_db -p -e 'select * from $table_name' |
 sed 's/\t/,/g' > /var/lib/mysql-files/$file_name.csv
 
 echo " File created : /var/lib/mysql-files/$file_name.csv "
-
