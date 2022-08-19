@@ -1,8 +1,14 @@
 #!/bin/bash
 
+user_db=""
+db_name=""
+file_name=""
+
+
 echo " | Enter the name of table to export  >"
 read -p " |> " table_name
 export $table_name
+
 
 #cat << EOF >
 #SELECT * FROM $table_name
