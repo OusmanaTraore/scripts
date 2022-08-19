@@ -124,7 +124,6 @@ function _checkRootUser()
 function _printPoweredBy()
 {
 #    cat <<"EOF"
-
 echo -e -n "
 ${Green}Powered By:
       _________________________________________________________________
@@ -142,3 +141,5 @@ ${Yellow} >> github: https://github.com/OusmanaTraore ${NC}
 #############################################################################################
 # SCRIPT FUNCTIONS
 _printPoweredBy
+
+sleep 2
