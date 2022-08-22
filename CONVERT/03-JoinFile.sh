@@ -2,6 +2,8 @@
 
 
 ls
+echo " Enter Csv Original file name "
+read -p " |> " file_name
 echo ""
 echo " | Joinging file together  >"  
 

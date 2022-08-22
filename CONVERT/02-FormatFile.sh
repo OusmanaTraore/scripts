@@ -15,9 +15,9 @@ read -p " |> " file_name
 echo " | Troncature du champ date puis formatage..."
 cp $file_name $file_name.csv
 awk 'BEGIN{FS=","} {print $15}  '  $file_name.csv   > cutFormat_01
-date  -f  cutFormat_01 '+%Y-%m-%d %H:%M:%S' > cutFormat_02
+date -f cutFormat_01 '+%Y-%m-%d %H:%M:%S' > cutFormat_02
 ls
-echo " | Affichage du fichier tronqué et formaté > "
+echo " | Affichage du fichier tronqué (cutFormat_02) > "
 cat cutFormat_02 | head -10 
 
 #for i in $list 
@@ -36,6 +36,6 @@ cat cutFormat_02 | head -10
 echo " | Ajout d'une nouvelle colonne date_formated " 
 sed  's/$/,/g'   cutFormat_02  > date_formated_Virgule
 
-echo " | Affichage du fichier tronqué et formaté > "
+echo " | Affichage du fichier tronqué et formaté (date_formated_Virgule) > "
 cat date_formated_Virgule | head -10
 
