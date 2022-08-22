@@ -1,10 +1,12 @@
 #!/bin/bash
 
-echo " | Joinging file together  >"
-ls  
 
-paste date_formated_Virgule $secondfile > finalfile.csv
+ls
+echo ""
+echo " | Joinging file together  >"  
 
-echo " File created : /var/lib/mysql-files/fileformated.csv "
+paste date_formated_Virgule $file_name.csv > finalfile.csv
+
+echo " File created : finalfile.csv "
 cat finalfile.csv | head -5
 
