@@ -13,12 +13,12 @@
 sudo  mysqldump -u $user_db -p  $db_name > $file_name.sql
  echo " file created: $file_name.sql"
 
-list="$db_name $file_name $user_db"
- for i in $list
- do
-        export $i
-        cat $i
- done
+#list="$db_name $file_name $user_db"
+# for i in $list
+# do
+#        export $i
+#        cat $i
+# done
 
 #declare -A list
 #list=([db_name]="$db_name":[file_name]=$file_name:[user_db]=$user_db")
