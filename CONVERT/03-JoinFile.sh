@@ -1,14 +1,18 @@
 #!/bin/bash
 
-
+clear
 ls
+echo " Enter Csv date_formated file name "
+read -p " |> " file_name_date
+echo ""
 echo " Enter Csv Original file name "
-read -p " |> " file_name
+read -p " |> " file_name_ori
 echo ""
 echo " | Joinging file together  >"  
+paste  $file_name_date $file_name_ori > finalfile_$file_name_ori
 
-paste date_formated_Virgule $file_name.csv > finalfile.csv
+#cut -d '_' -f1  filetemp_$file_name_ori > finalfile_$file_name_ori
 
-echo " File created : finalfile.csv "
-cat finalfile.csv | head -5
+echo " File created : finalfile_$file_name_ori "
+cat finalfile_$file_name_ori | head -5
 
