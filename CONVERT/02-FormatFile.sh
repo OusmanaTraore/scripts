@@ -1,7 +1,5 @@
 #!/bin/bash
-
-#list= "Sun Mon Tue Wed Thu Fri Sat"
-touch format1
+clear
 #awk ' {print $10}  ' /var/lib/mysql-files/$file_name.csv > /var/lib/mysql-files/format1
 # 	BEGIN { actions }
 # 	/pattern/ { actions }
@@ -10,32 +8,23 @@ touch format1
 #	 END { actions }
 ls
 echo""
-echo " | Nom du fichier à tronquer sans extension  > "
-read -p " |> " file_name
+echo " | Nom du fichier à tronquer  > "
+read -p " |> " file_name_in
+echo""
+echo " | Nom du fichier de sortie  > "
+read -p " |> " file_name_out
+
 echo " | Troncature du champ date puis formatage..."
-cp $file_name $file_name.csv
-awk 'BEGIN{FS=","} {print $15}  '  $file_name.csv   > cutFormat_01
+cp $file_name_in $file_name_out
+awk 'BEGIN{FS=","} {print $15}  '  $file_name_out   > cutFormat_01
 date -f cutFormat_01 '+%Y-%m-%d %H:%M:%S' > cutFormat_02
 ls
 echo " | Affichage du fichier tronqué (cutFormat_02) > "
 cat cutFormat_02 | head -10 
 
-#for i in $list 
-#do
-#    sed -i 's/$i/ /g'   cutFormat1
-#    sed -i 's/CEST/ /g'   cutFormat1
-#done
-
-#cat cutFormat1 | cut -d " " -f 6 > time_file
-#cat cutFormat1 | cut -d " " -f 9 > date_file
-#cat cutFormat1 | head -5
-
-#paste date_file time_file > date_formated
-
-#cat date_formated | head -5 
 echo " | Ajout d'une nouvelle colonne date_formated " 
-sed  's/$/,/g'   cutFormat_02  > date_formated_Virgule
-
-echo " | Affichage du fichier tronqué et formaté (date_formated_Virgule) > "
-cat date_formated_Virgule | head -10
+sed  's/$/,/g'   cutFormat_02  > date_formated_Virgule_$file_name_in
+sleep 2 
+echo " | Affichage du fichier tronqué et formaté (date_formated_Virgule_$file_name_in) > "
+cat date_formated_Virgule_$file_name_in | head -10
 
