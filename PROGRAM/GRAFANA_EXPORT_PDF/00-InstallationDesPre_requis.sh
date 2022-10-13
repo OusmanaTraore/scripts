@@ -7,9 +7,12 @@ ARRAY=( "texlive-pdftex" "texlive-latex-bin" "texlive-texconfig*" "texlive-latex
         "texlive-caption" "texlive-ifluatex*"  "texlive-collection-fontsrecommended"
         "texlive-collection-latexrecommended" "texinfo-tex")
 
+sudo yum install wget
 for i in "${!ARRAY[@]}"
 do   
       echo " Installation de pré-requis n°$((i+1)): ${ARRAY[$i]}"
-      apt install ${ARRAY[$i]}
+      sudo  yum install -y ${ARRAY[$i]}
+      sudo yum clean packages
 done
                    
+

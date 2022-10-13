@@ -2,9 +2,10 @@
 
 port_="8686"
 echo " Ajout du port $port_"
+sudo systemctl start firewalld
 echo " |==>"
-firewall-cmd --zone=public --permanent --add-port=$port_/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=$port_/tcp
 
 echo " Reload du firewall "
 echo " |==>"
-firewall-cmd --reload
+sudo firewall-cmd --reload

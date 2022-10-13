@@ -5,11 +5,11 @@ go_version="go1.19.2.linux-amd64.tar.gz"
 
 echo "Téléchargement de GO, version:$go_version"
 echo " |==>"
-wget https://dl.google.com/go/$go_version
+sudo wget https://dl.google.com/go/$go_version
 
 echo "Décompression du fichier de GO, version:$go_version"
 echo " |==>"
-tar -C /usr/local -xzf $go_version
+sudo tar -C /usr/local -xzf $go_version
 
 echo "Export du fichier dans /usr/local/go/bin"
 echo " |==>"
